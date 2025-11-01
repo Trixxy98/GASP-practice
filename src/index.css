@@ -1,0 +1,629 @@
+@import "tailwindcss";
+
+/* ========================================
+   AESTHETIC MODERN FONTS
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: #dfdff0;
+  font-family: 'Inter', 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ========================================
+   THEME VARIABLES
+   ======================================== */
+@theme {
+  /* Font Families */
+  --font-family-zentry: "zentry", "Inter", sans-serif;
+  --font-family-general: "general", "Inter", sans-serif;
+  --font-family-circular-web: "circular-web", "Inter", sans-serif;
+  --font-family-robert-medium: "robert-medium", "Inter", sans-serif;
+  --font-family-robert-regular: "robert-regular", "Inter", sans-serif;
+
+  /* Colors */
+  --color-blue-50: #DFDFF0;
+  --color-blue-75: #dfdff2;
+  --color-blue-100: #F0F2FA;
+  --color-blue-200: #010101;
+  --color-blue-300: #4FB7DD;
+  
+  --color-violet-50: rgba(139, 92, 246, 0.5);
+  --color-violet-300: #5724ff;
+  
+  --color-yellow-100: #8e983f;
+  --color-yellow-300: #edff66;
+
+  /* Transitions */
+  --bento-transition: transform 300ms ease-out;
+  --bento-border: 1px solid rgb(255 255 255 / 0.2);
+}
+
+/* ========================================
+   CUSTOM FONT FACES
+   ======================================== */
+@font-face {
+  font-family: "circular-web";
+  src: url("/fonts/circularweb-book.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "general";
+  src: url("/fonts/general.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "robert-medium";
+  src: url("/fonts/robert-medium.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "robert-regular";
+  src: url("/fonts/robert-regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "zentry";
+  src: url("/fonts/zentry-regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.5rem + 3vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.2rem + 2vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.hero-heading {
+  text-transform: uppercase;
+  font-family: 'Inter', var(--font-family-zentry), sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 12rem);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-shadow: 
+    0 2px 20px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+
+
+.special-font b {
+  font-family: 'Inter', "Zentry", sans-serif;
+  font-feature-settings: "ss01" on;
+  font-weight: 700;
+  background: grey;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   NAVBAR STYLES
+   ======================================== */
+.border-hsla {
+  border: 1px solid rgb(255 255 255 / 0.2);
+}
+
+.nav-hover-btn {
+  position: relative;
+  margin-inline-start: 2.5rem;
+  font-family: 'Inter', "General Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: rgb(223 223 240);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-hover-btn:hover {
+  color: white;
+}
+
+.nav-hover-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  transform-origin: bottom right;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.nav-hover-btn:hover::after {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+.floating-nav {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 0.5rem;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mask-clip-path {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ========================================
+   ANIMATED TITLE
+   ======================================== */
+.animated-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  line-height: 0.8;
+  color: white;
+}
+
+@media (width >= 640px) {
+  .animated-title {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+@media (width >= 768px) {
+  .animated-title {
+    font-size: 6rem;
+  }
+}
+
+.animated-word {
+  font-family: 'Inter', var(--font-family-zentry), sans-serif;
+  font-weight: 900;
+  opacity: 0;
+  transform: var(--transform-initial);
+  transform-origin: 50% 50% -150px !important;
+  will-change: opacity, transform;
+}
+
+/* ========================================
+   BENTO GRID STYLES
+   ======================================== */
+.bento-title {
+  text-transform: uppercase;
+  font-size: clamp(1.5rem, 1.2rem + 2.5vw, 3.75rem);
+  font-family: 'Inter', var(--font-family-zentry), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.bento-tilt_1 {
+  position: relative;
+  border: var(--bento-border);
+  overflow: hidden;
+  border-radius: 0.375rem;
+  transition: var(--bento-transition);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.bento-tilt_2 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  transition: var(--bento-transition);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   ABOUT SECTION
+   ======================================== */
+.about-subtext {
+  position: absolute;
+  bottom: -80dvh;
+  left: 50%;
+  width: 100%;
+  max-width: 24rem;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Inter', var(--font-family-circular-web), sans-serif;
+  font-size: 1.125rem;
+}
+
+@media (width >= 768px) {
+  .about-subtext {
+    max-width: 34rem;
+  }
+}
+
+.about-image {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 20;
+  height: var(--about-image-height);
+  width: var(--about-image-width);
+  transform-origin: center;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 1.5rem;
+  --about-image-height: 50vh;
+  --about-image-width: 90vw;
+  --about-image-md-width: 70vw;
+}
+
+@media (width >= 768px) {
+  .about-image {
+    width: var(--about-image-md-width);
+    --about-image-height: 65vh;
+  }
+}
+
+#clip .mask-clip-path {
+  width: 50vw;
+  height: 50vh;
+  border-radius: 2rem;
+}
+
+/* ========================================
+   STORY SECTION
+   ======================================== */
+.story-img-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-img-mask {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  height: 70vh;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.story-img-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   CONTACT SECTION
+   ======================================== */
+.text-violet-50 {
+  color: var(--color-violet-50);
+}
+
+/* ========================================
+   LOADER (Three Body)
+   ======================================== */
+.three-body {
+  --uib-size: 35px;
+  --uib-speed: 0.8s;
+  --uib-color: #5d3fd3;
+  position: relative;
+  display: inline-block;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+}
+
+.three-body__dot {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+}
+
+.three-body__dot:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: var(--uib-color);
+  border-radius: 50%;
+}
+
+.three-body__dot:nth-child(1) {
+  bottom: 5%;
+  left: 0;
+  transform: rotate(60deg);
+  transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(1)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite ease-in-out;
+  animation-delay: calc(var(--uib-speed) * -0.3);
+}
+
+.three-body__dot:nth-child(2) {
+  bottom: 5%;
+  right: 0;
+  transform: rotate(-60deg);
+  transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(2)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15) ease-in-out;
+}
+
+.three-body__dot:nth-child(3) {
+  bottom: -5%;
+  left: 0;
+  transform: translateX(116.666%);
+}
+
+.three-body__dot:nth-child(3)::after {
+  top: 0;
+  left: 0;
+  animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+
+@keyframes spin78236 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wobble1 {
+  0%, 100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-66%) scale(0.65);
+    opacity: 0.8;
+  }
+}
+
+@keyframes wobble2 {
+  0%, 100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(66%) scale(0.65);
+    opacity: 0.8;
+  }
+}
+
+/* ========================================
+   AUDIO INDICATOR
+   ======================================== */
+.indicator-line {
+  width: 3px;
+  height: 8px;
+  background-color: #d1d5db;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.indicator-line.active {
+  background-color: #3b82f6;
+  animation: audioBar 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes audioBar {
+  0% {
+    height: 5px;
+    opacity: 0.7;
+  }
+  100% {
+    height: 16px;
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   BUTTON STYLES
+   ======================================== */
+button, a {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   CLIP PATH UTILITIES
+   ======================================== */
+@utility sword-man-clip-path {
+  clip-path: polygon(16% 0, 89% 15%, 75% 100%, 0 97%);
+}
+
+@utility contact-clip-path-1 {
+  clip-path: polygon(25% 0%, 74% 0, 69% 64%, 34% 73%);
+}
+
+@utility contact-clip-path-2 {
+  clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
+}
+
+/* ========================================
+   SELECTION STYLES
+   ======================================== */
+::selection {
+  background-color: rgba(102, 126, 234, 0.3);
+  color: inherit;
+}
+
+::-moz-selection {
+  background-color: rgba(102, 126, 234, 0.3);
+  color: inherit;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.875rem;
+  }
+  
+  .hero-heading {
+    font-size: clamp(2.5rem, 8vw, 10rem);
+  }
+  
+  .bento-title {
+    font-size: clamp(1.25rem, 5vw, 2.25rem);
+  }
+}
+
+/* ========================================
+   CUSTOM UTILITIES LAYER
+   ======================================== */
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 
+      0 0 10px rgba(87, 36, 255, 0.8),
+      0 0 20px rgba(87, 36, 255, 0.6),
+      0 0 30px rgba(87, 36, 255, 0.4);
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+  
+  .backdrop-blur-lg {
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* ========================================
+   ALTERNATIVE AESTHETIC FONTS
+   Uncomment to use different fonts
+   ======================================== */
+
+/* OPTION 2: Poppins - Friendly & Modern */
+/*
+body {
+  font-family: 'Poppins', 'General Sans', sans-serif;
+}
+
+.hero-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.special-font {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.bento-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+}
+*/
+
+/* OPTION 3: Space Grotesk - Bold & Artistic */
+/*
+body {
+  font-family: 'Space Grotesk', 'General Sans', sans-serif;
+}
+
+.hero-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.special-font {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+.bento-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+*/
